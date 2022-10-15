@@ -1,4 +1,5 @@
 import React from 'react'
+import Notes from './Notes'
 
 function Home() {
   return (
@@ -23,6 +24,7 @@ function Home() {
             </form>
             </div>
 
+    <Notes/>
     </div>
   )
 }
