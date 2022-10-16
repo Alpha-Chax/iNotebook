@@ -53,6 +53,8 @@ const NoteState = (props) => {
       }
     );
    const json = response.json();
+   // eslint-disable-next-line
+   console.log(json);
 
     const newNotes = notes.filter((note) => {
       return note._id !== id;
@@ -75,6 +77,9 @@ const NoteState = (props) => {
       }
     );
    const json = await response.json();
+   // eslint-disable-next-line
+   console.log(json);
+
   
     
    let newNotes = JSON.parse(JSON.stringify(notes))
