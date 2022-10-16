@@ -2,12 +2,13 @@ import React, {useState} from 'react'
 import { useHistory } from 'react-router-dom'
 
 
-const Signup = () => {
+const Signup = (props) => {
     const [credentials, setCredentials] = useState({name:"", email: "", password: "", cpassword: ""}) 
     let history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // eslint-disable-next-line
         const {name, email, password} = credentials;
        
         const response = await fetch("http://localhost:5000/api/auth/createUser", {
@@ -23,10 +24,10 @@ const Signup = () => {
             // Save the auth token and redirect
             localStorage.setItem('token', json.authtoken); 
             history.push("/");
-
+            props.showAlert("Account Created Successfully", "success")
         }
         else{
-            alert("Invalid credentials");
+           props.showAlert("Invalid Credentials", "danger")
         }
     }
 
@@ -35,26 +36,27 @@ const Signup = () => {
     }
 
   return (
-    <div className="container">
+    <div className="container mt-2">
+      <h2 className='my-4'>Create An Account To Use iNotebook</h2>
     <form onSubmit={handleSubmit}>
-  <div className="mb-3">
+  <div className="my-3">
     <label htmlFor="name" className="form-label">Name</label>
-    <input type="name" className="form-control" id="name" name='name' onChange={onChange} required/>
+    <input type="name" className="form-control" id="name" name='name' onChange={onChange} />
   </div>
-  <div className="mb-3">
+  <div className="my-3">
     <label htmlFor="email" className="form-label">Email address</label>
-    <input type="email" className="form-control" id="email" name='email' onChange={onChange} aria-describedby="emailHelp" required/>
+    <input type="email" className="form-control" id="email" name='email' onChange={onChange} aria-describedby="emailHelp" />
     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
   </div>
-  <div className="mb-3">
+  <div className="my-3">
     <label htmlFor="password" className="form-label">Password</label>
     <input type="password" className="form-control" id="password" name='password' onChange={onChange} minLength={5} required/>
   </div>
-  <div className="mb-3">
+  <div className="my-3">
     <label htmlFor="cpassword" className="form-label">Confirm Password</label>
     <input type="password" className="form-control" id="cpassword" name='cpassword' onChange={onChange} minLength={5} required/>
   </div>
-  <button type="submit" className="btn btn-primary">Submit</button>
+  <button type="submit" className="btn btn-outline-info my-2">Submit</button>
 </form>
 </div>
   )
