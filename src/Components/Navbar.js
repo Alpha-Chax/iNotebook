@@ -28,9 +28,9 @@ function Navbar() {
 
                     </ul>
                     {!localStorage.getItem('token')?<form className="d-flex">
-                    <Link className="btn btn-outline-info mx-1" to="/login" role="button">Login</Link>
-                    <Link className="btn btn-outline-info mx-1" to="/signup" role="button">Signup</Link>
-                    </form>: <button onClick={handleLogout} className="btn btn-outline-info mx-3">Logout</button>}
+                    <Link className="btn btn-outline-warning mx-1" to="/login" role="button">Login</Link>
+                    <Link className="btn btn-outline-warning mx-1" to="/signup" role="button">Signup</Link>
+                    </form>: <button onClick={handleLogout} className="btn btn-outline-warning mx-3">Logout</button>}
                 </div>
             </div>
         </nav>

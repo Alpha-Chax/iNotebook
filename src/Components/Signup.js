@@ -56,7 +56,7 @@ const Signup = (props) => {
     <label htmlFor="cpassword" className="form-label">Confirm Password</label>
     <input type="password" className="form-control" id="cpassword" name='cpassword' onChange={onChange} minLength={5} required/>
   </div>
-  <button type="submit" className="btn btn-outline-info my-2">Submit</button>
+  <button type="submit" className="btn btn-outline-dark my-2">Submit</button>
 </form>
 </div>
   )
