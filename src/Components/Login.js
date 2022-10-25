@@ -34,15 +34,15 @@ const Login = (props) => {
 
     return (
         <div className='mt-3'>
-            <h2 className='my-4'>Login To Continue To iNotebook</h2>
+            <h2 style={{borderRadius:"5px",display:"inline-block", backgroundColor:"beige", padding:"7px"}} className='my-4'>Login To Continue To iNotebook</h2>
             <form  onSubmit={handleSubmit}>
                 <div className="my-3">
-                    <label htmlFor="email" className="form-label">Email address</label>
+                    <label htmlFor="email" className="form-label"><strong>Email address</strong></label>
                     <input type="email" className="form-control" value={credentials.email} onChange={onChange} id="email" name="email" aria-describedby="emailHelp" />
-                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                    <div id="emailHelp" className="form-text"><strong>We'll never share your email with anyone else.</strong></div>
                 </div>
                 <div className="my-3">
-                    <label htmlFor="password" className="form-label">Password</label>
+                    <label htmlFor="password" className="form-label"><strong>Password</strong></label>
                     <input type="password" className="form-control" value={credentials.password} onChange={onChange} name="password" id="password" />
                 </div>
 

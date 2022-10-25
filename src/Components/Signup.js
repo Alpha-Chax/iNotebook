@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 
 
 const Signup = (props) => {
-    const [credentials, setCredentials] = useState({name:"", email: "", password: "", cpassword: ""}) 
+    const [credentials, setCredentials] = useState({name:"", email: "", password: ""}) 
     let history = useHistory();
 
     const handleSubmit = async (e) => {
@@ -20,6 +20,8 @@ const Signup = (props) => {
         });
         const json = await response.json()
         console.log(json);
+     
+
         if (json.success){
             // Save the auth token and redirect
             localStorage.setItem('token', json.authtoken); 
@@ -31,30 +33,28 @@ const Signup = (props) => {
         }
     }
 
+  
+
     const onChange = (e)=>{
         setCredentials({...credentials, [e.target.name]: e.target.value})
     }
 
   return (
     <div className="container mt-2">
-      <h2 className='my-4'>Create An Account To Use iNotebook</h2>
+      <h2 style={{borderRadius:"5px",display:"inline-block", backgroundColor:"beige", padding:"7px"}} className='my-4'>Create An Account To Use iNotebook</h2>
     <form onSubmit={handleSubmit}>
   <div className="my-3">
-    <label htmlFor="name" className="form-label">Name</label>
+    <label htmlFor="name" className="form-label"><strong>Name</strong></label>
     <input type="name" className="form-control" id="name" name='name' onChange={onChange} />
   </div>
   <div className="my-3">
-    <label htmlFor="email" className="form-label">Email address</label>
+    <label htmlFor="email" className="form-label"><strong>Email address</strong></label>
     <input type="email" className="form-control" id="email" name='email' onChange={onChange} aria-describedby="emailHelp" />
-    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+    <div id="emailHelp" className="form-text"><strong>We'll never share your email with anyone else.</strong></div>
   </div>
   <div className="my-3">
-    <label htmlFor="password" className="form-label">Password</label>
+    <label htmlFor="password" className="form-label"><strong>Password</strong></label>
     <input type="password" className="form-control" id="password" name='password' onChange={onChange} minLength={5} required/>
-  </div>
-  <div className="my-3">
-    <label htmlFor="cpassword" className="form-label">Confirm Password</label>
-    <input type="password" className="form-control" id="cpassword" name='cpassword' onChange={onChange} minLength={5} required/>
   </div>
   <button type="submit" className="btn btn-outline-dark my-2">Submit</button>
 </form>
