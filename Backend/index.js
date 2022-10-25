@@ -15,7 +15,7 @@ app.use('/api/notes', require('./routes/notes'))
 
 //Heroku Setup
 if(process.env.NODE_ENV === 'production'){
-  
+  app.use(express.static('inotebook\Client\build'))
 }
 
 
