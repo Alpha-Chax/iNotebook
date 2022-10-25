@@ -1,6 +1,7 @@
 const connectToMongo = require('./db');
 const express = require('express')
 var cors = require('cors')
+const path = require('path')
 
 connectToMongo();
 const app = express()
@@ -13,11 +14,17 @@ app.use(express.json())
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/notes', require('./routes/notes'))
 
-//Heroku Setup
+//--------------DEVELOPMENT----------------------------
+__dirname = path.resolve();
 if(process.env.NODE_ENV === 'production'){
-  app.use(express.static('inotebook\Client\build'))
+  app.use(express.static(path.join(__dirname, '/Client\build')))
 }
 
+app.get("*", (req,res) =>{
+  res.sendFile(path.resolve(__dirname, "Client", "build", "index.html"))
+})
+
+//--------------DEVELOPMENT-----------------------------
 
 app.listen(port, () => {
   console.log(`iNotebook backend listening on port ${port}`)
