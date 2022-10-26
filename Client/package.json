@@ -16,12 +16,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build1": "cd inotebook/Client && npm run build",
-    "install-client": "cd inotebook/Client && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build1",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "both": "concurrently \"npm run start\" \"nodemon ../backend/index.js\""
+    "both": "concurrently \"npm run start\" \"nodemon ../backend/index.js\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Client && npm run build --prefix Client"
   },
   "eslintConfig": {
     "extends": [
