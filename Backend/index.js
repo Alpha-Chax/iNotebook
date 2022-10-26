@@ -5,7 +5,7 @@ const path = require('path')
 
 connectToMongo();
 const app = express()
-const port = process.env.port || 5000
+const PORT = process.env.PORT || 5000
 
 app.use(cors())
 app.use(express.json())
@@ -26,6 +26,6 @@ app.get("*", (req,res) =>{
 
 //--------------DEVELOPMENT-----------------------------
 
-app.listen(port, () => {
-  console.log(`iNotebook backend listening on port ${port}`)
+app.listen(PORT, () => {
+  console.log(`iNotebook backend listening on PORT ${PORT}`)
 })
