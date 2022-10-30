@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const mongoURI = "mongodb://localhost:27017/inotebook?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false"
 
 const connectToMongo = ()=>{
-    mongoose.connect(process.env.MONGODB_URI || mongoURI, ()=>{
+    mongoose.connect(process.env.DATABASE_URL || mongoURI, ()=>{
         console.log("Connected to Mongo Successfully");
     })
 }
