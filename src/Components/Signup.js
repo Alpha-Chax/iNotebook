@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { useHistory } from 'react-router-dom'
 
+const host = "https://inotebook-backend.adaptable.app";
 
 const Signup = (props) => {
     const [credentials, setCredentials] = useState({name:"", email: "", password: ""}) 
@@ -11,7 +12,7 @@ const Signup = (props) => {
         // eslint-disable-next-line
         const {name, email, password} = credentials;
        
-        const response = await fetch("http://localhost:5000/api/auth/createUser", {
+        const response = await fetch(`${host}/api/auth/createUser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
